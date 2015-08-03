@@ -1,0 +1,28 @@
+<div class="create-mail">
+	<div class="cm-mailbox">
+		<input placeholder="<?=$arrayForm['umail']['title']?>" class="field-tpl halffield" type="text" name="<?=$arrayForm['umail']['name']?>" id="<?=$arrayForm['umail']['name']?>" value=""> @ 		
+	</div>
+	<div class="cm-mailbox">
+		<select class="field-tpl half-select" name="<?=$f_Items['xxx']?>" disabled="" id="<?=$f_Items['xxx']?>">
+			<option selected="selected" value="1">bioline.ru</option>
+			<option value="2">biomebel.ru</option>
+			<option value="3">mail.ru</option>
+			<option value="4">yandex.ru</option>
+		</select>
+		<i id="log-mail-flag" style="  margin-left: 10px;color: rgb(0, 153, 0);" class="fa fa-check-circle exelfiledIU"></i>
+	</div>
+		<div style="clear:both"></div>
+	<div class="cm-mailbox">
+		<input style="width: 155px;" class="field-tpl" type="text" name="<?=$arrayForm['upass']['name']?>" id="<?=$arrayForm['upass']['name']?>" value="" placeholder="<?=$arrayForm['upass']['title']?>">
+	</div>
+	<div class="cm-mailbox">
+		<a onclick="$(\'#<?=$arrayForm['upass']['name']?>\').val(str_rand());document.getElementById(\'<?=$arrayForm['upass']['name']?>\').focus();" title="сгенерировать случайный пароль" class="genpass-btn" href="javascript:void(0);">Случайный пароль</a>
+		<i id="pass-exelent" style="  margin-left: 10px;color: rgb(0, 153, 0);" class="fa fa-check-circle exelfiledIU"></i>	
+	</div>
+		
+	<div style="clear:both"></div>
+	<div class="test-letter-cmb">
+		<a style="  float: right;  margin-right: 60px;  width: 119px;  text-align: center;padding: 5px 0;background: #d9534f;" class="btn-createpost" id="cancel-create-mail" href="javascript:void(0);">Не создавать ящик</a>
+		<input type="checkbox" id="sendtestletter" name="staff_testletter_ok" value="1"> <label for="sendtestletter">Приветствие?</label>
+	</div>
+</div>
