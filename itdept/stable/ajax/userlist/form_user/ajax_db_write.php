@@ -2,6 +2,7 @@
 session_start();
 $adressesMAIL = 'fedosova@bioline.ru, it@bioline.ru, belskaya@bioline.ru';
 $chairMail = 'kodenuk@bioline.ru';
+$OneC_Mail = '1c@bioline.ru';
 $receptionMail = 'reception1@bioline.ru, reception2@bioline.ru';
 
 
@@ -13,6 +14,9 @@ if(isset($_POST['staff_chair']) || isset($_POST['staff_table_for'])){
 }
 if(isset($_POST['staff_concelar'])){
 	$adressesMAIL .= ', '.$receptionMail;
+}
+if(isset($_POST['staff_one_c'])){
+	$adressesMAIL .= ', '.$OneC_Mail;
 }
 if($_POST['other_mail']){
 	$messageTOIT = $adressesMAIL.', '.$_POST['other_mail'];
@@ -56,7 +60,6 @@ foreach($arrayForm as $f_key => $f_Items){
 //echo $_POST[$f_Items['name']];
 	switch($f_Items['name']){
 		case $prefix.'company':
-		case $prefix.'department':
 		case $prefix.'location':
 		case $prefix.'executive':
 			if($_POST[$f_Items['name']] == '0'){
@@ -66,6 +69,9 @@ foreach($arrayForm as $f_key => $f_Items){
 			}else{
 				$rezArr[0][$f_key]['mistakeIU'] = 'nomistake';
 			}
+			break;
+		case $prefix.'department':
+		$rezArr[0][$f_key]['mistakeIU'] = 'nomistake';
 			break;
 		case $prefix.'umail':
 		//echo $getData['id'];
@@ -306,10 +312,13 @@ $dopinfo 			= 		  $_POST['dop_info_form'];
 
 $dateenter = date('Y-m-d',strtotime($dateenter));
 
+if($datedr){
 	$date_month = date('d-m',strtotime($datedr));
 	$date = DateTime::createFromFormat('!d-m', $datedr);
 	$userbdate = date_format($date, 'U');
-
+}else{
+	$userbdate = 0;
+}
 
 $sql = 'SELECT * from company WHERE company_id = :company_id';
 $tb = $db->connection->prepare($sql);
@@ -408,6 +417,10 @@ if(isset($_POST[$arrayForm['umail']['name']])){
 if($dopinfo){
 	$dopinfo_text = '<br><u>Дополнительная информация:</u><br><pre>'.$dopinfo.'</pre>';
 }
+
+if($_POST['staff_department']!=0){
+	$showDepartment = 'Отдел: <b>'.$getDepartment['department_name'].'</b><br>';
+}
 	
 	$messageIT = '<div style=" font-family:\'Segoe UI\';font-size: 14px;">
 Уважаемые сотрудники!<br><br>
@@ -417,7 +430,7 @@ if($dopinfo){
 
 Компания: <b style="color:#009999">'.$getCompany['company_name'].'</b><br>
 Расположение: <b>'.$getLoc['location_name'].'</b><br>
-Отдел: <b>'.$getDepartment['department_name'].'</b><br>
+'.$showDepartment.'
 '.$show_group.'
 Руководитель: <b>'.$executive.'</b><br>
 Должность: <b>'.$st_post.'</b><br><br>

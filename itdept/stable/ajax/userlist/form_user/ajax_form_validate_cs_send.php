@@ -21,7 +21,6 @@ foreach($arrayForm as $f_key => $f_Items){
 //echo $_POST[$f_Items['name']];
 	switch($f_Items['name']){
 		case $prefix.'company':
-		case $prefix.'department':
 		case $prefix.'location':
 		case $prefix.'executive':
 		case $prefix.'groupdep':
@@ -32,6 +31,9 @@ foreach($arrayForm as $f_key => $f_Items){
 			}else{
 				$rezArr[0][$f_key]['mistakeIU'] = 'nomistake';
 			}
+			break;
+		case $prefix.'department':
+		$rezArr[0][$f_key]['mistakeIU'] = 'nomistake';
 			break;
 		case $prefix.'umail':
 		//echo $getData['id'];
