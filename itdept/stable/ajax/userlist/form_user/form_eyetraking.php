@@ -200,9 +200,9 @@ $arRezlt = $tb->fetch(PDO::FETCH_ASSOC);
 				<td><div class="staff-fontf staff-second-row status-staff-rzl" style="color:<?=$colorStaff?>"><?=$arRezlt['status']?></div></td>
 			</tr>
 			<tr>
-				<td data-staffid = "<?=$arRezlt['staff_id']?>"><?if($userLevel['oper_correct_staff']!='0'){?><a id="staff_corusr" class="bluebtn" href="javascript:void(0);">Редактировать</a><?}?></td>
+				<td data-staffid = "<?=$arRezlt['staff_id']?>"><?if($userLevel['oper_correct_staff']=='1'){?><a id="staff_corusr" class="bluebtn" href="javascript:void(0);">Редактировать</a><?}?></td>
 				<td>
-					<?if($arRezlt['staff_active'] == '0' AND $arRezlt['staff_datedeactive'] == '0000-00-00 00:00:00' AND $arRezlt['staff_typedeactive']=='' AND $userLevel['oper_correct_staff']!='0'){?><a onclick="actstaff(<?=$arRezlt['staff_id']?>);" class="greenbtn" href="javascript:void(0);">Активировать</a><?}?>
+					<?if($arRezlt['staff_active'] == '0' AND $arRezlt['staff_datedeactive'] == '0000-00-00 00:00:00' AND $arRezlt['staff_typedeactive']=='' AND $userLevel['oper_correct_staff']=='1'){?><a onclick="actstaff(<?=$arRezlt['staff_id']?>);" class="greenbtn" href="javascript:void(0);">Активировать</a><?}?>
 				</td>
 			</tr>
 		</table>

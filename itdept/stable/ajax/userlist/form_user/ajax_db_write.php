@@ -29,7 +29,7 @@ $subject = 'Заявка о добавлении нового сотрудник
 require '../../../../../ajax/db.php';
 require '../../../../../ajax/secfile.php';
 
-if($userLevel['oper_create_staff']!='0'){
+if($userLevel['oper_create_staff']=='1'){
 //--itdept DB
 //require '../../../db.php';
 require 'arrFields.php';

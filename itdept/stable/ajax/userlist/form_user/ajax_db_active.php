@@ -9,7 +9,7 @@ require '../../../../../ajax/secfile.php';
 //require '../../../db.php';
 require 'arrFields.php';
 
-if($userLevel['oper_correct_staff']!='0'){
+if($userLevel['oper_correct_staff']=='1'){
 
 
 $db = new DatabaseItDept();

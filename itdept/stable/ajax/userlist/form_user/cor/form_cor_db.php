@@ -5,7 +5,7 @@
 require '../../../../../../ajax/db.php';
 require '../../../../../../ajax/secfile.php';
 
-if($userLevel['oper_correct_staff']!='0'){
+if($userLevel['oper_correct_staff']=='1'){
 
 $db = new DatabaseItDept();
 
