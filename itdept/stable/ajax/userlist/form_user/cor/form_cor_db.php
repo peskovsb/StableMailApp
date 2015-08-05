@@ -5,6 +5,8 @@
 require '../../../../../../ajax/db.php';
 require '../../../../../../ajax/secfile.php';
 
+if($userLevel['oper_correct_staff']!='0'){
+
 $db = new DatabaseItDept();
 
 /*
@@ -47,3 +49,5 @@ switch($_POST['staff_status']){
 $sql = 'UPDATE staff SET staff_dr=:staff_dr, staff_lastname=:staff_lastname, staff_name=:staff_name, staff_secondname=:staff_secondname, staff_company_id=:staff_company_id, staff_depart_id=:staff_depart_id, staff_group_id=:staff_group_id, staff_post=:staff_post, staff_dopcomp1=:staff_dopcomp1, staff_dopcomp2=:staff_dopcomp2, staff_location=:staff_location, staff_ats=:staff_ats, staff_mobnumber=:staff_mobnumber, staff_enterdate=:staff_enterdate, staff_datedeactive=:staff_datedeactive, staff_active=:staff_active, staff_typedeactive=:staff_typedeactive WHERE staff_id =:staff_id';
 $tb = $db->connection->prepare($sql);
 $tb->execute(array(':staff_lastname'=>$_POST['staff_cor_lastname'], ':staff_name'=>$_POST['staff_name'], ':staff_secondname'=>$_POST['staff_secondname'], ':staff_company_id'=>$_POST['staff_company_id'],':staff_depart_id'=>$_POST['staff_department'],':staff_id'=>$_POST['staff_id'],':staff_group_id'=>$_POST['staff_group_id'],':staff_post'=>$_POST['staff_post'],':staff_dopcomp1'=>$_POST['staff_dopcomp1'],':staff_dopcomp2'=>$_POST['staff_dopcomp2'],':staff_location'=>$_POST['staff_location'],':staff_ats'=>$_POST['staff_ats'],':staff_mobnumber'=>$_POST['staff_mobnumber'],':staff_enterdate'=>date('Y-m-d',strtotime($_POST['staff_enterdate'])).' 00:00:00', ':staff_datedeactive'=>date('Y-m-d',strtotime($_POST['staff_datedeactive'])).' 00:00:00', ':staff_active'=>$status_staff, ':staff_typedeactive'=>$status_type, ':staff_dr'=>$userbdate));
+
+}

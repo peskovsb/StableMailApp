@@ -9,6 +9,7 @@ require '../../../../../ajax/secfile.php';
 //require '../../../db.php';
 require 'arrFields.php';
 
+if($userLevel['oper_correct_staff']!='0'){
 
 
 $db = new DatabaseItDept();
@@ -16,4 +17,5 @@ $db = new DatabaseItDept();
 $sql = 'UPDATE staff SET staff_active=1 WHERE staff_id=:staff_id';
 $tb = $db->connection->prepare($sql);
 $tb->execute(array(':staff_id'=>$_POST['staff_id']));
+}
 ?>

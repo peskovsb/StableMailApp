@@ -29,6 +29,7 @@ $subject = 'Заявка о добавлении нового сотрудник
 require '../../../../../ajax/db.php';
 require '../../../../../ajax/secfile.php';
 
+if($userLevel['oper_create_staff']!='0'){
 //--itdept DB
 //require '../../../db.php';
 require 'arrFields.php';
@@ -457,5 +458,6 @@ if($_POST['staff_department']!=0){
 	mail($messageTOIT, $subject, $messageIT, $headers);
 	
 
+}
 }
 ?>
