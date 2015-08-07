@@ -66,9 +66,7 @@ if(strlen($_POST['staff_post'])>0){
 }
 
 if($_POST['staff_department'] == '0'){
-	$rezArr[0]['staff_department']['mistakeIU'] = 'mistake';
-	$rezArr[0]['staff_department']['msg'] = 'Не все необходимые поля заполнены';
-		$mistake = 1;
+	$rezArr[0]['staff_department']['mistakeIU'] = 'nomistake';
 }else{
 	$rezArr[0]['staff_department']['mistakeIU'] = 'nomistake';
 }

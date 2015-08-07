@@ -152,10 +152,12 @@ $arRezlt = $tb->fetch(PDO::FETCH_ASSOC);
 				<td><div class="staff-fontf staff-second-row"><?=$arRezlt['staff_dopcomp2']?></div></td>
 			</tr>
 			<?}?>
+			<?if($arRezlt['staff_depart_id']){?>
 			<tr>
 				<td><div class="staff-fontf staff-first-row">Отдел: </div></td>
 				<td><div class="staff-fontf staff-second-row"><?=$arRezlt['staff_depart_id']?></div></td>
 			</tr>
+			<?}?>
 			<?if($arRezlt['staff_group_id']){?>
 			<tr>
 				<td><div class="staff-fontf staff-first-row">Группа: </div></td>
