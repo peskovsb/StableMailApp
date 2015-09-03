@@ -321,6 +321,16 @@ if($datedr){
 	$userbdate = 0;
 }
 
+$dt_st = explode('-',trim($_POST[$arrayForm['dateenter']['name']]));
+$returnEntr = mktime($dt_st[1], $dt_st[0], $dt_st[2]);
+$returnCur = mktime(date('m'), date('d'), date('Y'));
+if($returnEntr<=$returnCur){
+	$word_change = 'вышел';
+}else{
+	$word_change = 'выйдет';
+}
+
+
 $sql = 'SELECT * from company WHERE company_id = :company_id';
 $tb = $db->connection->prepare($sql);
 $tb->execute(array(':company_id'=>$company));
@@ -426,7 +436,7 @@ if($_POST['staff_department']!=0){
 	$messageIT = '<div style=" font-family:\'Segoe UI\';font-size: 14px;">
 Уважаемые сотрудники!<br><br>
 
-'.$dateenter.' вышел новый сотрудник:<br>
+'.trim($_POST[$arrayForm['dateenter']['name']]).' '.$word_change.' новый сотрудник:<br>
 <b>'.$user_last_name.' '.$user_name.' '.$user_secondname.'</b><br><br>
 
 Компания: <b style="color:#009999">'.$getCompany['company_name'].'</b><br>
